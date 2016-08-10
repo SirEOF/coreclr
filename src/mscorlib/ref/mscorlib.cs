@@ -4531,6 +4531,13 @@ namespace System.Configuration.Assemblies
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         SHA512 = 32782,
     }
+    [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    public enum AssemblyVersionCompatibility
+    {
+        SameMachine         = 1,
+        SameProcess         = 2,
+        SameDomain          = 3,
+    }
 }
 namespace System.Diagnostics
 {
@@ -6822,8 +6829,13 @@ namespace System.Reflection
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public sealed partial class AssemblyFlagsAttribute : System.Attribute
     {
+        [System.CLSCompliantAttribute(false)]
+        public AssemblyFlagsAttribute(uint flags) { }
+        public AssemblyFlagsAttribute(int assemblyFlags) { }
         public AssemblyFlagsAttribute(System.Reflection.AssemblyNameFlags assemblyFlags) { }
         public int AssemblyFlags { get { throw null; } }
+        [System.CLSCompliantAttribute(false)]
+        public int Flags { get { throw null; } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(1), Inherited=false)]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -6863,10 +6875,12 @@ namespace System.Reflection
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public System.Reflection.AssemblyContentType ContentType { get { throw null; } set { } }
         public System.Globalization.CultureInfo CultureInfo { get { throw null; } set { } }
-        public string CultureName { get { throw null; } set { } }
+        public string CultureName { [System.Security.SecurityCriticalAttribute]get { throw null; } [System.Security.SecurityCriticalAttribute]set { } }
+        public string CodeBase { get { throw null; } set { } }
         public System.Reflection.AssemblyNameFlags Flags { get { throw null; } set { } }
         public string FullName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public System.Configuration.Assemblies.AssemblyHashAlgorithm HashAlgorithm { get { throw null; } set { } }
+        public System.Configuration.Assemblies.AssemblyVersionCompatibility VersionCompatibility { get { throw null; } set { } }
         public string Name { get { throw null; } set { } }
         public System.Reflection.ProcessorArchitecture ProcessorArchitecture { get { throw null; } set { } }
         public System.Version Version { get { throw null; } set { } }

@@ -1859,6 +1859,8 @@ namespace System
         public Exception() { }
         public Exception(string message) { }
         public Exception(string message, System.Exception innerException) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        protected Exception(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public virtual System.Collections.IDictionary Data { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public virtual string HelpLink { get { throw null; } set { } }
         public int HResult { get { throw null; } protected set { } }
@@ -1900,6 +1902,7 @@ namespace System
         public FormatException() { }
         public FormatException(string message) { }
         public FormatException(string message, System.Exception innerException) { }
+        protected FormatException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : base(default(System.Runtime.Serialization.SerializationInfo), default(System.Runtime.Serialization.StreamingContext)) { }
     }
     public abstract partial class FormattableString : System.IFormattable
     {
@@ -2312,6 +2315,11 @@ namespace System
         [System.Diagnostics.DebuggerBrowsableAttribute((System.Diagnostics.DebuggerBrowsableState)(0))]
         public T Value { get { throw null; } }
         public override string ToString() { throw null; }
+    }
+    [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    public abstract partial class MarshalByRefObject
+    {
+        internal MarshalByRefObject() { }
     }
     public static partial class Math
     {
@@ -3120,6 +3128,7 @@ namespace System
         public SystemException() { }
         public SystemException(string message) { }
         public SystemException(string message, System.Exception innerException) { }
+        protected SystemException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : base(default(System.Runtime.Serialization.SerializationInfo), default(System.Runtime.Serialization.StreamingContext)) { }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(256), Inherited=false)]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -6675,6 +6684,7 @@ namespace System.Reflection
         public virtual string Location { [System.Security.SecurityCriticalAttribute]get { throw null; } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public virtual System.Reflection.Module ManifestModule { get { throw null; } }
+        public virtual event ModuleResolveEventHandler ModuleResolve { [System.Security.SecurityCriticalAttribute]add { } [System.Security.SecurityCriticalAttribute]remove { } }
         public virtual System.Collections.Generic.IEnumerable<System.Reflection.Module> Modules { get { throw null; } }
         public object CreateInstance(string typeName) { throw null; }
         public object CreateInstance(string typeName, bool ignoreCase) { throw null; }
@@ -6857,6 +6867,11 @@ namespace System.Reflection
         PublicKey = 1,
         Retargetable = 256,
     }
+    [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    public class AssemblyNameProxy : System.MarshalByRefObject
+    {
+        internal AssemblyNameProxy() { }
+    }
     [System.AttributeUsageAttribute((System.AttributeTargets)(1), Inherited=false)]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public sealed partial class AssemblyProductAttribute : System.Attribute
@@ -7020,6 +7035,7 @@ namespace System.Reflection
         public CustomAttributeFormatException() { }
         public CustomAttributeFormatException(string message) { }
         public CustomAttributeFormatException(string message, System.Exception inner) { }
+        protected CustomAttributeFormatException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : base(default(System.Runtime.Serialization.SerializationInfo), default(System.Runtime.Serialization.StreamingContext)) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
@@ -7429,6 +7445,8 @@ namespace System.Reflection
         public virtual System.Type ResolveType(int metadataToken, System.Type[] genericTypeArguments, System.Type[] genericMethodArguments) { throw null; }
         public override string ToString() { throw null; }
     }
+    [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    public delegate System.Reflection.Module ModuleResolveEventHandler(object sender, System.ResolveEventArgs e);
     [System.FlagsAttribute]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public enum ParameterAttributes
@@ -7596,6 +7614,7 @@ namespace System.Reflection
         public TargetException() { }
         public TargetException(string message) { }
         public TargetException(string message, System.Exception inner) { }
+        protected TargetException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : base(default(System.Runtime.Serialization.SerializationInfo), default(System.Runtime.Serialization.StreamingContext)) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public sealed partial class TargetInvocationException : System.Exception

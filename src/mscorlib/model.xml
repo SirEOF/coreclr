@@ -1955,6 +1955,7 @@
       <Member Name="#ctor" />
       <Member Name="#ctor(System.String)" />
       <Member Name="#ctor(System.String,System.Exception)" />
+      <Member Name="#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" />
       <Member Name="get_Data" />
       <Member Name="get_HelpLink" />
       <Member Name="get_HResult" />
@@ -2005,6 +2006,7 @@
       <Member Name="#ctor" />
       <Member Name="#ctor(System.String)" />
       <Member Name="#ctor(System.String,System.Exception)" />
+      <Member Name="#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" />
     </Type>
     <Type Name="System.FormattableString">
       <Member Name="#ctor" />
@@ -3221,6 +3223,8 @@
       <Member MemberType="Property" Name="Value"/>
       <Member Name="get_Value"/>
     </Type>
+    <Type Name="System.MarshalByRefObject">
+    </Type>
     <Type Status="ImplRoot" Name="System.System_LazyDebugView&lt;T&gt;">
       <Member Status="ImplRoot" Name="#ctor(System.Lazy&lt;T&gt;)"/>
       <Member Status="ImplRoot" MemberType="Property" Name="IsValueCreated"/>
@@ -3728,6 +3732,8 @@
       <Member MemberType="Field" Name="Retargetable" />
       <Member MemberType="Field" Name="value__" />
     </Type>
+    <Type Name="System.Reflection.AssemblyNameProxy">
+    </Type>
     <Type Name="System.Reflection.AssemblyProductAttribute">
       <Member Name="#ctor(System.String)" />
       <Member Name="get_Product" />
@@ -3893,6 +3899,7 @@
       <Member Name="#ctor" />
       <Member Name="#ctor(System.String)" />
       <Member Name="#ctor(System.String,System.Exception)" />
+      <Member Name="#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" />
     </Type>
     <Type Name="System.Reflection.DefaultMemberAttribute">
       <Member Name="#ctor(System.String)" />
@@ -5352,6 +5359,12 @@
       <Member Status="ImplRoot" MemberType="Field" Name="m_pRefClass" /> <!-- EE -->
       <Member Status="ImplRoot" MemberType="Field" Name="m_runtimeType" /> <!-- EE -->
     </Type>
+    <Type Name="System.Reflection.ModuleResolveEventHandler">
+      <Member Name="#ctor(System.Object,System.IntPtr)" />
+      <Member Name="BeginInvoke(System.Object,System.ResolveEventArgs,System.AsyncCallback,System.Object)" />
+      <Member Name="EndInvoke(System.IAsyncResult)" />
+      <Member Name="Invoke(System.Object,System.ResolveEventArgs)" />
+    </Type>
     <Type Name="System.Reflection.ParameterAttributes">
       <Member MemberType="Field" Name="HasDefault" />
       <Member MemberType="Field" Name="HasFieldMarshal" />
@@ -5460,6 +5473,7 @@
 	  <Member Name="#ctor" />
       <Member Name="#ctor(System.String)" />
       <Member Name="#ctor(System.String,System.Exception)" />
+      <Member Name="#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" />
 	</Type>
     <Type Name="System.Reflection.TargetInvocationException">
       <Member Name="#ctor(System.Exception)" />
@@ -6591,6 +6605,7 @@
       <Member Name="#ctor" />
       <Member Name="#ctor(System.String)" />
       <Member Name="#ctor(System.String,System.Exception)" />
+      <Member Name="#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" />
     </Type>
     <Type Name="System.Text.ASCIIEncoding">
       <Member Name="#ctor" />

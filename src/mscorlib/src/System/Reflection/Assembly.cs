@@ -84,7 +84,6 @@ namespace System.Reflection
                 return m.Assembly;
         }
 
-#if !FEATURE_CORECLR
         public static bool operator ==(Assembly left, Assembly right)
         {
             if (ReferenceEquals(left, right))
@@ -102,7 +101,6 @@ namespace System.Reflection
         {
             return !(left == right);
         }
-#endif // !FEATURE_CORECLR
 
         public override bool Equals(object o)
         {

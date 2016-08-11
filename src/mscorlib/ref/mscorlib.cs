@@ -7125,6 +7125,8 @@ namespace System.Reflection
     public abstract partial class EventInfo : System.Reflection.MemberInfo
     {
         protected EventInfo() { }
+        public static bool operator ==(System.Reflection.EventInfo left, System.Reflection.EventInfo right) { throw null; }
+        public static bool operator !=(System.Reflection.EventInfo left, System.Reflection.EventInfo right) { throw null; }
         public virtual System.Reflection.MethodInfo AddMethod { get { throw null; } }
         public abstract System.Reflection.EventAttributes Attributes { get; }
         public virtual System.Type EventHandlerType { get { throw null; } }
@@ -7140,6 +7142,8 @@ namespace System.Reflection
         public System.Reflection.MethodInfo GetAddMethod() { throw null; }
         public abstract System.Reflection.MethodInfo GetAddMethod(bool nonPublic);
         public override int GetHashCode() { throw null; }
+        public System.Reflection.MethodInfo[] GetOtherMethods() { throw null; }
+        public virtual System.Reflection.MethodInfo[] GetOtherMethods(bool nonPublic) { throw null; }
         public System.Reflection.MethodInfo GetRaiseMethod() { throw null; }
         public abstract System.Reflection.MethodInfo GetRaiseMethod(bool nonPublic);
         public System.Reflection.MethodInfo GetRemoveMethod() { throw null; }
@@ -7177,6 +7181,8 @@ namespace System.Reflection
     public abstract partial class FieldInfo : System.Reflection.MemberInfo
     {
         protected FieldInfo() { }
+        public static bool operator ==(System.Reflection.FieldInfo left, System.Reflection.FieldInfo right) { throw null; }
+        public static bool operator !=(System.Reflection.FieldInfo left, System.Reflection.FieldInfo right) { throw null; }
         public abstract System.Reflection.FieldAttributes Attributes { get; }
         public abstract System.RuntimeFieldHandle FieldHandle { get; }
         public abstract System.Type FieldType { get; }
@@ -7190,6 +7196,9 @@ namespace System.Reflection
         public bool IsPinvokeImpl { get { throw null; } }
         public bool IsPrivate { get { throw null; } }
         public bool IsPublic { get { throw null; } }
+        public virtual bool IsSecurityCritical { get { throw null; } }
+        public virtual bool IsSecuritySafeCritical { get { throw null; } }
+        public virtual bool IsSecurityTransparent { get { throw null; } }
         public bool IsSpecialName { get { throw null; } }
         public bool IsStatic { get { throw null; } }
         public override System.Reflection.MemberTypes MemberType { get { throw null; } }

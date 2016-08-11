@@ -2472,6 +2472,26 @@ namespace System
         public MissingMethodException(string message, System.Exception inner) { }
         public override string Message { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
     }
+    [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    public unsafe struct ModuleHandle
+    {
+        public static readonly System.ModuleHandle EmptyHandle;
+        public int MDStreamVersion { get { throw null; } }
+        public override int GetHashCode() { throw null; }
+        public override bool Equals(object obj) { throw null; }
+        public unsafe bool Equals(System.ModuleHandle handle) { throw null; }
+        public static bool operator ==(System.ModuleHandle left, System.ModuleHandle right) { throw null; }
+        public static bool operator !=(System.ModuleHandle left, System.ModuleHandle right) { throw null; }
+        public System.RuntimeTypeHandle GetRuntimeTypeHandleFromMetadataToken(int typeToken) { throw null; }
+        public System.RuntimeTypeHandle ResolveTypeHandle(int typeToken) { throw null; }
+        public System.RuntimeTypeHandle ResolveTypeHandle(int typeToken, System.RuntimeTypeHandle[] typeInstantiationContext, System.RuntimeTypeHandle[] methodInstantiationContext) { throw null; }
+        public System.RuntimeMethodHandle GetRuntimeMethodHandleFromMetadataToken(int methodToken) { throw null; }
+        public System.RuntimeMethodHandle ResolveMethodHandle(int methodToken) { throw null; }
+        public System.RuntimeMethodHandle ResolveMethodHandle(int methodToken, System.RuntimeTypeHandle[] typeInstantiationContext, System.RuntimeTypeHandle[] methodInstantiationContext) { throw null; }
+        public System.RuntimeFieldHandle GetRuntimeFieldHandleFromMetadataToken(int fieldToken) { throw null; }
+        public System.RuntimeFieldHandle ResolveFieldHandle(int fieldToken) { throw null; }
+        public System.RuntimeFieldHandle ResolveFieldHandle(int fieldToken, System.RuntimeTypeHandle[] typeInstantiationContext, System.RuntimeTypeHandle[] methodInstantiationContext) { throw null; }
+    }
     [System.AttributeUsageAttribute((System.AttributeTargets)(64))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public sealed partial class MTAThreadAttribute : System.Attribute
@@ -7334,6 +7354,8 @@ namespace System.Reflection
     public abstract partial class MemberInfo : System.Reflection.ICustomAttributeProvider
     {
         protected MemberInfo() { }
+        public static bool operator ==(System.Reflection.MemberInfo left, System.Reflection.MemberInfo right) { throw null; }
+        public static bool operator !=(System.Reflection.MemberInfo left, System.Reflection.MemberInfo right) { throw null; }
         public virtual System.Collections.Generic.IEnumerable<System.Reflection.CustomAttributeData> CustomAttributes { get { throw null; } }
         public abstract System.Type DeclaringType { get; }
         public abstract System.Reflection.MemberTypes MemberType { get; }
@@ -7503,9 +7525,13 @@ namespace System.Reflection
         public static readonly System.Reflection.TypeFilter FilterTypeName;
         public static readonly System.Reflection.TypeFilter FilterTypeNameIgnoreCase;
         protected Module() { }
+        public static bool operator ==(System.Reflection.Module left, System.Reflection.Module right) { throw null; }
+        public static bool operator !=(System.Reflection.Module left, System.Reflection.Module right) { throw null; }
         public virtual System.Reflection.Assembly Assembly { get { throw null; } }
+        public System.ModuleHandle ModuleHandle { get { throw null; } }
         public virtual System.Collections.Generic.IEnumerable<System.Reflection.CustomAttributeData> CustomAttributes { get { throw null; } }
         public virtual string FullyQualifiedName { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual int MDStreamVersion { get { throw null; } }
         public virtual int MetadataToken { get { throw null; } }
         public virtual System.Guid ModuleVersionId { get { throw null; } }
         public virtual string Name { get { throw null; } }
@@ -7527,6 +7553,7 @@ namespace System.Reflection
         public virtual System.Reflection.MethodInfo[] GetMethods(System.Reflection.BindingFlags bindingFlags) { throw null; }
         [System.Security.SecurityCriticalAttribute]
         public virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        public virtual void GetPEKind(out System.Reflection.PortableExecutableKinds peKind, out System.Reflection.ImageFileMachine machine) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public virtual System.Type GetType(string className) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -7535,10 +7562,15 @@ namespace System.Reflection
         public virtual System.Type GetType(string className, bool throwOnError, bool ignoreCase) { throw null; }
         public virtual System.Type[] GetTypes() { throw null; }
         public virtual bool IsDefined(System.Type attributeType, bool inherit) { throw null; }
+        public virtual bool IsResource() { throw null; }
+        public virtual System.Collections.Generic.IList<CustomAttributeData> GetCustomAttributesData() { throw null; }
         public System.Reflection.FieldInfo ResolveField(int metadataToken) { throw null; }
         public virtual System.Reflection.FieldInfo ResolveField(int metadataToken, System.Type[] genericTypeArguments, System.Type[] genericMethodArguments) { throw null; }
+        public virtual System.Reflection.MemberInfo ResolveMember(int metadataToken) { throw null; }
+        public virtual System.Reflection.MemberInfo ResolveMember(int metadataToken, System.Type[] genericTypeArguments, System.Type[] genericMethodArguments) { throw null; }
         public System.Reflection.MethodBase ResolveMethod(int metadataToken) { throw null; }
         public virtual System.Reflection.MethodBase ResolveMethod(int metadataToken, System.Type[] genericTypeArguments, System.Type[] genericMethodArguments) { throw null; }
+        public virtual byte[] ResolveSignature(int metadataToken) { throw null; }
         public virtual string ResolveString(int metadataToken) { throw null; }
         public System.Type ResolveType(int metadataToken) { throw null; }
         public virtual System.Type ResolveType(int metadataToken, System.Type[] genericTypeArguments, System.Type[] genericMethodArguments) { throw null; }
@@ -7596,6 +7628,18 @@ namespace System.Reflection
     {
         public ParameterModifier(int parameterCount) { throw null;}
         public bool this[int index] { get { throw null; } set { } }
+    }
+    [System.FlagsAttribute]
+    [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    public enum PortableExecutableKinds
+    {
+        NotAPortableExecutableImage = 0,
+        ILOnly                      = 1,
+        Required32Bit               = 2,
+        PE32Plus                    = 4,
+        Unmanaged32Bit              = 8,
+        [System.Runtime.InteropServices.ComVisible(false)]
+        Preferred32Bit              = 16,
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public enum ProcessorArchitecture

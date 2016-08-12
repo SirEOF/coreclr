@@ -6855,7 +6855,7 @@ namespace System.Reflection
         public AssemblyFlagsAttribute(System.Reflection.AssemblyNameFlags assemblyFlags) { }
         public int AssemblyFlags { get { throw null; } }
         [System.CLSCompliantAttribute(false)]
-        public int Flags { get { throw null; } }
+        public uint Flags { get { throw null; } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(1), Inherited=false)]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -6925,7 +6925,7 @@ namespace System.Reflection
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public class AssemblyNameProxy : System.MarshalByRefObject
     {
-        internal AssemblyNameProxy() { }
+        public AssemblyNameProxy() { }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(1), Inherited=false)]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -7032,7 +7032,7 @@ namespace System.Reflection
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class CustomAttributeData
     {
-        internal CustomAttributeData() { }
+        protected CustomAttributeData() { }
         public System.Type AttributeType { get { throw null; } }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public virtual System.Reflection.ConstructorInfo Constructor { get { throw null; } }
@@ -7366,6 +7366,7 @@ namespace System.Reflection
         public override bool Equals(object obj) { throw null; }
         public abstract object[] GetCustomAttributes(bool inherit);
         public abstract object[] GetCustomAttributes(System.Type attributeType, bool inherit);
+        public virtual System.Collections.Generic.IList<System.Reflection.CustomAttributeData> GetCustomAttributesData() { throw null; }
         public override int GetHashCode() { throw null; }
         public abstract bool IsDefined(System.Type attributeType, bool inherit);
     }
@@ -7576,6 +7577,25 @@ namespace System.Reflection
         public virtual System.Type ResolveType(int metadataToken, System.Type[] genericTypeArguments, System.Type[] genericMethodArguments) { throw null; }
         public override string ToString() { throw null; }
     }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(1), AllowMultiple=false, Inherited=false)]
+    [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    public sealed class ObfuscateAssemblyAttribute : System.Attribute
+    {
+        public ObfuscateAssemblyAttribute(bool assemblyIsPrivate) { throw null; }
+        public bool AssemblyIsPrivate { get { throw null; } }
+        public bool StripAfterObfuscation { get { throw null; } set { } }
+    }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(1) | (System.AttributeTargets)(4) | (System.AttributeTargets)(8) | (System.AttributeTargets)(64) | (System.AttributeTargets)(2048) | (System.AttributeTargets)(256) | (System.AttributeTargets)(128) | (System.AttributeTargets)(512) | (System.AttributeTargets)(1024) | (System.AttributeTargets)(16) | (System.AttributeTargets)(4096),
+    AllowMultiple = true, Inherited = false)]
+    [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    public sealed class ObfuscationAttribute: System.Attribute
+    {
+        public ObfuscationAttribute() { }
+        public bool StripAfterObfuscation { get { throw null; } set { } }
+        public bool Exclude { get { throw null; } set { } }
+        public bool ApplyToMembers { get { throw null; } set { } }
+        public string Feature { get { throw null; } set { } }
+    }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public delegate System.Reflection.Module ModuleResolveEventHandler(object sender, System.ResolveEventArgs e);
     [System.FlagsAttribute]
@@ -7622,6 +7642,7 @@ namespace System.Reflection
         public virtual object RawDefaultValue { get { throw null; } }
         public virtual object[] GetCustomAttributes(bool inherit) { throw null; }
         public virtual object[] GetCustomAttributes(System.Type attributeType, bool inherit) { throw null; }
+        public virtual System.Collections.Generic.IList<System.Reflection.CustomAttributeData> GetCustomAttributesData() { throw null; }
         public virtual System.Type[] GetOptionalCustomModifiers() { throw null; }
         [System.Security.SecurityCriticalAttribute]
         public object GetRealObject(System.Runtime.Serialization.StreamingContext context) { throw null; }
@@ -7827,6 +7848,59 @@ namespace System.Reflection
         VisibilityMask = 7,
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         WindowsRuntime = 16384,
+    }
+    [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    public class TypeDelegator : System.Reflection.TypeInfo
+    {
+        public override bool IsAssignableFrom(System.Reflection.TypeInfo typeInfo) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        protected TypeDelegator() { }
+        public TypeDelegator(System.Type delegatingType) { }
+        public override System.Guid GUID { get { throw null; } }
+        public override int MetadataToken { get { throw null; } }
+        public override object InvokeMember(System.String name,System.Reflection.BindingFlags invokeAttr,System.Reflection.Binder binder,System.Object target, System.Object[] args,System.Reflection.ParameterModifier[] modifiers,System.Globalization.CultureInfo culture,System.String[] namedParameters) { throw null; }
+        public override System.Reflection.Module Module { get { throw null; } }
+        public override System.Reflection.Assembly Assembly { get { throw null; } }
+        public override System.RuntimeTypeHandle TypeHandle { get { throw null; } }
+        public override System.String Name { get { throw null; } }
+        public override System.String FullName { get { throw null; } }
+        public override System.String Namespace { get { throw null; } }
+        public override System.String AssemblyQualifiedName { get { throw null; } }
+        public override System.Type BaseType { get { throw null; } }
+        protected override System.Reflection.ConstructorInfo GetConstructorImpl(System.Reflection.BindingFlags bindingAttr,System.Reflection.Binder binder, System.Reflection.CallingConventions callConvention, System.Type[] types, System.Reflection.ParameterModifier[] modifiers) { throw null; }
+        [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        public override System.Reflection.ConstructorInfo[] GetConstructors(System.Reflection.BindingFlags bindingAttr) { throw null; }
+        protected override System.Reflection.MethodInfo GetMethodImpl(System.String name,System.Reflection.BindingFlags bindingAttr,System.Reflection.Binder binder, System.Reflection.CallingConventions callConvention, System.Type[] types,System.Reflection.ParameterModifier[] modifiers) { throw null; }
+        public override System.Reflection.MethodInfo[] GetMethods(System.Reflection.BindingFlags bindingAttr) { throw null; }
+        public override System.Reflection.FieldInfo GetField(System.String name, System.Reflection.BindingFlags bindingAttr) { throw null; }
+        public override System.Reflection.FieldInfo[] GetFields(System.Reflection.BindingFlags bindingAttr) { throw null; }
+        public override System.Type GetInterface(System.String name, bool ignoreCase) { throw null; }
+        public override System.Type[] GetInterfaces() { throw null; }
+        public override System.Reflection.EventInfo GetEvent(System.String name,System.Reflection.BindingFlags bindingAttr) { throw null; }
+        public override System.Reflection.EventInfo[] GetEvents() { throw null; }
+        protected override System.Reflection.PropertyInfo GetPropertyImpl(System.String name,System.Reflection.BindingFlags bindingAttr,System.Reflection.Binder binder, System.Type returnType, System.Type[] types, System.Reflection.ParameterModifier[] modifiers) { throw null; }
+        public override System.Reflection.PropertyInfo[] GetProperties(System.Reflection.BindingFlags bindingAttr) { throw null; }
+        public override System.Reflection.EventInfo[] GetEvents(System.Reflection.BindingFlags bindingAttr) { throw null; }
+        public override System.Type[] GetNestedTypes(System.Reflection.BindingFlags bindingAttr) { throw null; }
+        public override System.Type GetNestedType(System.String name, System.Reflection.BindingFlags bindingAttr) { throw null; }
+        public override System.Reflection.MemberInfo[] GetMember(System.String name,  System.Reflection.MemberTypes type, System.Reflection.BindingFlags bindingAttr) { throw null; }
+        public override System.Reflection.MemberInfo[] GetMembers(System.Reflection.BindingFlags bindingAttr) { throw null; }
+        protected override TypeAttributes GetAttributeFlagsImpl() { throw null; }
+        protected override bool IsArrayImpl() { throw null; }
+        protected override bool IsPrimitiveImpl() { throw null; }
+        protected override bool IsByRefImpl() { throw null; }
+        protected override bool IsPointerImpl() { throw null; }
+        protected override bool IsValueTypeImpl() { throw null; }
+        protected override bool IsCOMObjectImpl() { throw null; }
+        public override bool IsConstructedGenericType { get { throw null; } }
+        public override System.Type GetElementType() { throw null; }
+        protected override bool HasElementTypeImpl() { throw null; }
+        public override System.Type UnderlyingSystemType { get { throw null; } }
+        public override System.Object[] GetCustomAttributes(bool inherit) { throw null; }
+        public override System.Object[] GetCustomAttributes(System.Type attributeType, bool inherit) { throw null; }
+        public override bool IsDefined(System.Type attributeType, bool inherit) { throw null; }
+        [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        public override System.Reflection.InterfaceMapping GetInterfaceMap(System.Type interfaceType) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public delegate bool TypeFilter(System.Type m, object filterCriteria);

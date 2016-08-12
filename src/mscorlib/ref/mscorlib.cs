@@ -6744,14 +6744,14 @@ namespace System.Reflection
         public System.Reflection.Module[] GetModules() { throw null; }
         public virtual System.Reflection.Module[] GetModules(bool getResourceModules) { throw null; }
         [System.Security.SecurityCriticalAttribute]
+        public virtual System.Reflection.AssemblyName GetName(bool copiedName) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public virtual System.Reflection.AssemblyName GetName() { throw null; }
         [System.Security.SecurityCriticalAttribute]
         public virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public virtual System.Reflection.AssemblyName[] GetReferencedAssemblies() { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]
-        public virtual Assembly GetSatelliteAssembly(System.Globalization.CultureInfo culture) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]
-        public virtual Assembly GetSatelliteAssembly(System.Globalization.CultureInfo culture, System.Version version) { throw null; }
+        public virtual System.Reflection.Assembly GetSatelliteAssembly(System.Globalization.CultureInfo culture) { throw null; }
+        public virtual System.Reflection.Assembly GetSatelliteAssembly(System.Globalization.CultureInfo culture, System.Version version) { throw null; }
         public virtual System.Type GetType(string name) { throw null; }
         public virtual System.Type GetType(string name, bool throwOnError) { throw null; }
         public virtual System.Type GetType(string name, bool throwOnError, bool ignoreCase) { throw null; }
@@ -7308,6 +7308,7 @@ namespace System.Reflection
         public InvalidFilterCriteriaException() { }
         public InvalidFilterCriteriaException(string message) { }
         public InvalidFilterCriteriaException(string message, System.Exception inner) { }
+        protected InvalidFilterCriteriaException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : base(default(System.Runtime.Serialization.SerializationInfo), default(System.Runtime.Serialization.StreamingContext)) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.Runtime.InteropServices.GuidAttribute("AFBF15E5-C37C-11d2-B88E-00A0C9B471B8")]
@@ -7852,6 +7853,7 @@ namespace System.Reflection
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public class TypeDelegator : System.Reflection.TypeInfo
     {
+        protected System.Type typeImpl;
         public override bool IsAssignableFrom(System.Reflection.TypeInfo typeInfo) { throw null; }
         [System.Security.SecuritySafeCriticalAttribute]
         protected TypeDelegator() { }

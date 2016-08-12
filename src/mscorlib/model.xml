@@ -3576,6 +3576,7 @@
       <Member Name="GetModules(System.Boolean)" />
       <Member Name="Equals(System.Object)" />
       <Member Name="GetHashCode" />
+      <Member Name="GetName(System.Boolean)" />
       <Member Name="GetName" />
       <Member Name="GetSatelliteAssembly(System.Globalization.CultureInfo)" />
       <Member Name="GetSatelliteAssembly(System.Globalization.CultureInfo,System.Version)" />
@@ -3757,6 +3758,7 @@
       <Member Name="SetPublicKeyToken(System.Byte[])" />
       <Member Name="ToString" />
       <Member Name="#ctor(System.String)" />
+      <Member MemberType="Property" Name="CodeBase" />
       <Member MemberType="Property" Name="CultureInfo" />
       <Member MemberType="Property" Name="CultureName" />
       <Member MemberType="Property" Name="ContentType" />
@@ -3766,6 +3768,7 @@
       <Member MemberType="Property" Name="Name" />
       <Member MemberType="Property" Name="ProcessorArchitecture" />
       <Member MemberType="Property" Name="Version" />
+      <Member MemberType="Property" Name="VersionCompatibility" />
     </Type>
     <Type Name="System.Reflection.AssemblyNameFlags">
       <Member MemberType="Field" Name="EnableJITcompileOptimizer" />
@@ -5206,6 +5209,7 @@
       <Member Name="#ctor" />
       <Member Name="#ctor(System.String)" />
       <Member Name="#ctor(System.String,System.Exception)" />
+      <Member Name="#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" />
     </Type>
     <Type Name="System.Reflection.InterfaceMapping">
       <Member MemberType="Field" Name="InterfaceMethods" />
@@ -5707,6 +5711,7 @@
       <Member Name="IsDefined(System.Type,System.Boolean)" />
       <Member Name="IsAssignableFrom(System.Reflection.TypeInfo)" />
       <Member Name="GetInterfaceMap(System.Type)" />
+      <Member MemberType="Field" Name="typeImpl" />
       <Member MemberType="Property" Name="GUID" />
       <Member MemberType="Property" Name="MetadataToken" />
       <Member MemberType="Property" Name="Module" />

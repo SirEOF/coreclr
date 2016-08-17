@@ -7388,6 +7388,8 @@ namespace System.Reflection
     public abstract partial class MemberInfo : System.Reflection.ICustomAttributeProvider
     {
         protected MemberInfo() { }
+        public static bool operator ==(System.Reflection.MemberInfo left, System.Reflection.MemberInfo right) { throw null; }
+        public static bool operator !=(System.Reflection.MemberInfo left, System.Reflection.MemberInfo right) { throw null; }
         public virtual System.Collections.Generic.IEnumerable<System.Reflection.CustomAttributeData> CustomAttributes { get { throw null; } }
         public abstract System.Type DeclaringType { get; }
         public abstract System.Reflection.MemberTypes MemberType { get; }
@@ -7560,6 +7562,8 @@ namespace System.Reflection
         public static readonly System.Reflection.TypeFilter FilterTypeName;
         public static readonly System.Reflection.TypeFilter FilterTypeNameIgnoreCase;
         protected Module() { }
+        public static bool operator ==(System.Reflection.Module left, System.Reflection.Module right) { throw null; }
+        public static bool operator !=(System.Reflection.Module left, System.Reflection.Module right) { throw null; }
         public virtual System.Reflection.Assembly Assembly { get { throw null; } }
         public virtual System.Collections.Generic.IEnumerable<System.Reflection.CustomAttributeData> CustomAttributes { get { throw null; } }
         public virtual string FullyQualifiedName { [System.Security.SecurityCriticalAttribute]get { throw null; } }
